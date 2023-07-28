@@ -1,0 +1,98 @@
+<<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>とおろくかんりょお/</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+    <section class="hero is-warning">
+  <div class="hero-body">
+    <div class="container">
+    <h1 class="title is-size-1">
+      登録完了
+    </h1>
+    <p class="is-size-3">お客様の部絵員登録が正確に完了しました。</p>
+    <p class="is-size-3 has-text-danger">3日以内に<span class="has-text-weight-bold">白身魚を10匹</span>もってこいまu...持ってきてください。</p>
+  <div class="notification is-danger">
+<p class="is-size-3 has-text-centered">
+<p>残り時間: <span id="countdown"></span></p>
+
+<progress class="progress"></progress>
+  </div>
+    <p class="is-size-3 has-text-danger"">お支払いが確認できない場合は<span class="has-text-weight-bold">法的まう</span>を大量に送ることになるのでご注意ください。</p>
+
+    <script>
+        // 3日後の終了日時を計算する関数
+        function calculateEndDate() {
+          const now = new Date();
+          const threeDaysLater = new Date(now.getTime() + (3 * 24 * 60 * 60 * 1000));
+          return threeDaysLater.toISOString().slice(0, 10); // YYYY-MM-DD形式で返す
+        }
+
+        // カウントダウンの終了日時を取得
+        const endDate = calculateEndDate();
+
+        // カウントダウンのタイマーを設定
+        function countdown() {
+          const targetDate = new Date(endDate).getTime();
+          const now = new Date().getTime();
+          const remainingTime = targetDate - now;
+
+          // カウントダウンが終了した場合、メッセージを表示してタイマーを停止
+          if (remainingTime <= 0) {
+            document.getElementById('countdown').innerHTML = 'カウントダウン終了';
+            return;
+          }
+
+          // 残り時間を計算して表示
+          const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+          const countdownElement = document.getElementById('countdown');
+          countdownElement.innerHTML = `${days}日 ${hours}時間 ${minutes}分 ${seconds}秒`;
+
+          // 1秒ごとにカウントダウン関数を再実行
+          setTimeout(countdown, 1000);
+        }
+
+        // ページが読み込まれたらカウントダウンを開始
+        countdown();
+      </script>
+
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2 class="title">お問合せ</h2>
+    <table class="table is-striped is-fullwidth">
+         <tr>
+            <td>電話番号</td><td>0120-4614-4614</td>
+        </tr>
+         <tr>
+            <td>メールアドレス</td><td>mautanpapabe-@siromail.mau</td>
+         </tr>
+    </table>
+      <h2 class="title">お振込先</h2>
+      <table class="table is-striped is-fullwidth">
+        <tr>
+            <td>銀行名（銀行コード）</td><td>しろいよ銀行（4614）</td>
+        </tr>
+        <tr>
+            <td>支店名（支店コード）</td><td>まう支店（460）</td>
+        </tr>
+        <tr>
+          <td>別種</td><td>普通貯金</td>
+          /<tr>
+          <tr>
+            <td>口座番号</td><td>4614000</td>
+          </tr>
+      </table>
+
+    </section>
+
+  </body>
+</html>
